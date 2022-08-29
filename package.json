@@ -1,0 +1,17 @@
+{
+  "name": "oneplayer",
+  "version": "1.0.0",
+  "description": "Documentation for the 42puzzles OnePLayer",
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Q42/onePlayer.git"
+  },
+  "author": "42 Puzzles",
+  "homepage": "https://github.com/Q42/onePlayer#readme",
+  "devDependencies": {
+    "prettier": "^2.7.1"
+  }
+}
