@@ -1,4 +1,6 @@
-# De OnePlayer (door 42Puzzles)
+---
+title: Implementeren van de OnePlayer
+---
 
 ## Embedding
 
@@ -48,7 +50,7 @@ Selecteer het onePlayer element met javascript en zet de naam van het thema.
 Hiervoor met de player wel klaar zijn met initialisatie fase.
 
 ```js
-document.querySelector('one-player').theme="darkMode";
+document.querySelector('one-player').theme = 'darkMode';
 ```
 
 ## Subscribe op player state events
@@ -60,12 +62,12 @@ onePlayer.addEventListener('onReady', subscribe);
 function subscribe() {
   // The custom onePlayer way...
   onePlayer.events.on('onStateChange', (playerState) => {
-    console.log('New Player state:', playerState)
+    console.log('New Player state:', playerState);
   });
 
   // The native way...
   onePlayer.addEventListener('onStateChange', (evt) => {
-    console.log('New Player state:', evt.detail)
+    console.log('New Player state:', evt.detail);
   });
 }
 ```
