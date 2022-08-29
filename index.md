@@ -1,5 +1,5 @@
 ---
-title: Implementeren van de OnePlayer
+title: Implementeren van de OnePlayer met content-slots
 ---
 
 ## Embedding
