@@ -1,7 +1,7 @@
 {
   "name": "oneplayer",
   "version": "1.0.0",
-  "description": "Documentation for the 42puzzles OnePLayer",
+  "description": "Documentation for the 42puzzles OnePlayer",
   "directories": {
     "doc": "docs"
   },
