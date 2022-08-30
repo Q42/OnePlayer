@@ -22,7 +22,7 @@ En vervolgens het `<content-slot>` custom element ergens in het body-element:
 <content-slot id="[slot-id]"></content-slot>
 ```
 
-## JavaScript ready?
+## Player ready voor JavaScript 
 
 Bij het inladen van de player doet deze een aantal initialisaties. Pas na initialisatie fase kan de player worden aangesproken door JavaScript.  
 Om de player te gebruiken zodra deze klaar is, gebruik je een native EventListener.
@@ -32,7 +32,7 @@ const onePlayer = document.querySelector('one-player');
 onePlayer.addEventListener('onReady', start);
 ```
 
-## Thema zetten
+## Gebruik van thema's
 
 Er zijn verschillende manieren om het thema op een player te zetten.
 
@@ -50,10 +50,15 @@ Selecteer het onePlayer element met javascript en zet de naam van het thema.
 Hiervoor met de player wel klaar zijn met initialisatie fase.
 
 ```js
-document.querySelector('one-player').theme = 'darkMode';
+const onePlayer = document.querySelector('one-player');
+onePlayer.addEventListener('onReady', start);
+
+function start() {
+  onePlayer.theme = 'darkMode';
+}
 ```
 
-## Subscribe op player state events
+## Subscribe op playerState events
 
 ```js
 const onePlayer = document.querySelector('one-player');
@@ -78,11 +83,12 @@ Zorg er voor dat de parent van het content-slot een hoogte en breedte heeft, voo
 
 ```html
 <style>
-  body {
+  .parent {
     /*or any other parent element*/
     margin: 0;
     padding: 0;
     height: 100vh;
+    width: 100vw;
   }
 </style>
 ```
