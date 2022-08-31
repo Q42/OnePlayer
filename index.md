@@ -1,6 +1,7 @@
 ---
 title: OnePlayer implementation with content-slots
 ---
+
 [![Latest OnePlayer Version](https://img.shields.io/badge/OnePlayer-0.0.18-brightgreen)](https://oneplayer.42puzzles.com/)
 
 ## Embedding
@@ -25,7 +26,7 @@ Next, add the `<content-slot />` custom element somewhere in the body-element:
 
 ## ContentSlot and OnePlayer JavaScript ready
 
-The `<content-slot />` will load a OnePlayer, iFrame or Player collection.  
+The `<content-slot />` will load an OnePlayer, iFrame or Player collection.  
 Once the slot is done it will dispatch the `onReady` event.  
 After the OnePlayer in inserted into the DOM, and is ready for use, it will also dispatch the `onReady` event.
 
@@ -45,7 +46,8 @@ You can already implement this function, wait for the player to be ready and go 
 
 ```js
 function onePlayerReady(onePlayer) {
-  // This onePlayer is the same as the reuslt of document.querySelector('one-player')
+  // This onePlayer is the same as the result of
+  // document.querySelector('one-player')
   console.log('This is the second way!', onePlayer.state);
 }
 ```
@@ -89,7 +91,7 @@ While embedding the player in the html, set the attribute as an attribute
 <content-slot id="[slot-id]" theme="darkMode" language="en"></content-slot>
 ```
 
-### With JavaScript
+### 2. With JavaScript
 
 Select the OnePlayer element with JavaScript and set the attribute.
 
