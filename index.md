@@ -32,32 +32,6 @@ const onePlayer = document.querySelector('one-player');
 onePlayer.addEventListener('onReady', start);
 ```
 
-## The use of themes
-
-There are two different ways to set themes on the player.
-
-### 1. Add it to the content-slot
-
-While embedding the player in the html, set the theme as an attribute
-
-```html
-<content-slot id="[slot-id]" theme="darkMode"></content-slot>
-```
-
-### With JavaScript
-
-Select the OnePlayer element with javascript and set the theme.  
-The player must be ready with the earlier mention initialisation phase.
-
-```js
-const onePlayer = document.querySelector('one-player');
-onePlayer.addEventListener('onReady', start);
-
-function start() {
-  onePlayer.theme = 'darkMode';
-}
-```
-
 ## Subscribe on playerState events
 
 ```js
@@ -74,6 +48,38 @@ function subscribe() {
   onePlayer.addEventListener('onStateChange', (evt) => {
     console.log('New Player state:', evt.detail);
   });
+}
+```
+
+## Attributes of the OnePlayer
+
+These are the supported attributes on the OnePlayer:
+
+| Attribute | Type   | Optional | Default     |
+| --------- | ------ | -------- | ----------- |
+| theme     | string | true     | "lightMode" |
+| language  | string | true     | "en"        |
+
+### 1. Add an attribute to the content-slot
+
+While embedding the player in the html, set the attribute as an attribute
+
+```html
+<content-slot id="[slot-id]" theme="darkMode" language="nl"></content-slot>
+```
+
+### With JavaScript
+
+Select the OnePlayer element with JavaScript and set the attribute.  
+The player must be ready with the earlier mention initialisation phase.
+
+```js
+const onePlayer = document.querySelector('one-player');
+onePlayer.addEventListener('onReady', start);
+
+function start() {
+  onePlayer.theme = 'darkMode';
+  onePlayer.language = 'nl';
 }
 ```
 
