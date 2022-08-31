@@ -22,21 +22,39 @@ Next, add the `<content-slot />` custom element somewhere in the body-element:
 <content-slot id="[slot-id]"></content-slot>
 ```
 
-## Player JavaScript ready
+## ContentSlot and OnePlayer JavaScript ready
 
-After the OnePlayer in inserted into the DOM, it goes through an initialisation phase. Only after this phase the player is ready to be used by JavaScript.  
-To use the player once it's ready, you can use a native EventListener.
+The `<content-slot />` will load a OnePlayer, iFrame or Player collection.  
+Once the te slot is done it will dispatch the `onReady` event.  
+After the OnePlayer in inserted into the DOM, and is ready for use, it will also dispatch the `onReady` event.
 
 ```js
-const onePlayer = document.querySelector('one-player');
-onePlayer.addEventListener('onReady', start);
+const contentSlot = document.querySelector('content-slot');
+contentSlot.addEventListener('onReady', () => {
+  const onePlayer = document.querySelector('one-player');
+  onePlayer.addEventListener('onReady', () => {
+    console.log('This is the first way');
+  });
+});
+```
+
+Although this is a clean way of waiting for all parts to be ready, it's also a little verbose.  
+Therefore, the onePlayer also calls the `onePlayerReady` function once it's ready.  
+You can already implement this function, wait for the player to be ready and go from there.
+
+```js
+function onePlayerReady(onePlayer) {
+  // This onePlayer is the same as the reuslt of document.querySelector('one-player')
+  console.log('This is the second way?!', onePlayer.state);
+}
 ```
 
 ## Subscribe on playerState events
 
 ```js
-const onePlayer = document.querySelector('one-player');
-onePlayer.addEventListener('onReady', subscribe);
+function onePlayerReady() {
+  subscribe();
+}
 
 function subscribe() {
   // The custom onePlayer way...
@@ -55,10 +73,12 @@ function subscribe() {
 
 These are the supported attributes on the OnePlayer:
 
-| Attribute | Type   | Optional | Default     |
-| --------- | ------ | -------- |-------------|
-| theme     | string | true     | "lightMode" |
-| language  | string | true     | "nl"        |
+| Attribute | Type   | Optional | Default     | Change via API    |
+| --------- | ------ | -------- | ----------- | ----------------- |
+| theme     | string | true     | "lightMode" | Yes               |
+| language  | string | true     | "nl"        | No \*<sup>1</sup> |
+
+\*<sup>1</sup> = This will be implemented in the future
 
 ### 1. Add an attribute to the content-slot
 
@@ -70,16 +90,11 @@ While embedding the player in the html, set the attribute as an attribute
 
 ### With JavaScript
 
-Select the OnePlayer element with JavaScript and set the attribute.  
-The player must be ready with the earlier mention initialisation phase.
+Select the OnePlayer element with JavaScript and set the attribute.
 
 ```js
-const onePlayer = document.querySelector('one-player');
-onePlayer.addEventListener('onReady', start);
-
-function start() {
+function onePlayerReady() {
   onePlayer.theme = 'darkMode';
-  onePlayer.language = 'en';
 }
 ```
 
