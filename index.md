@@ -1,10 +1,10 @@
 ---
-title: Implementeren van de OnePlayer met content-slots
+title: OnePlayer implementation with content-slots
 ---
 
 ## Embedding
 
-Om de player in een website te embedden, zet je het volgende script-element in de head van de html:
+To embed the OnePlayer in your website, start by adding the following script-element in the head of the html:
 
 ```html
 <script
@@ -16,38 +16,38 @@ Om de player in een website te embedden, zet je het volgende script-element in d
 ></script>
 ```
 
-En vervolgens het `<content-slot>` custom element ergens in het body-element:
+Next, add the `<content-slot />` custom element somewhere in the body-element:
 
 ```html
 <content-slot id="[slot-id]"></content-slot>
 ```
 
-## Player ready voor JavaScript 
+## Player JavaScript ready
 
-Bij het inladen van de player doet deze een aantal initialisaties. Pas na initialisatie fase kan de player worden aangesproken door JavaScript.  
-Om de player te gebruiken zodra deze klaar is, gebruik je een native EventListener.
+After the OnePlayer in inserted into the DOM, it goes through an initialisation phase. Only after this phase the player is ready to be used by JavaScript.  
+To use the player once it's ready, you can use a native EventListener.
 
 ```js
 const onePlayer = document.querySelector('one-player');
 onePlayer.addEventListener('onReady', start);
 ```
 
-## Gebruik van thema's
+## The use of themes
 
-Er zijn verschillende manieren om het thema op een player te zetten.
+There are two different ways to set themes on the player.
 
-### Toevoegen aan het content slot.
+### 1. Add it to the content-slot
 
-Tijdens het embedden zet je het thema in de html
+While embedding the player in the html, set the theme as an attribute
 
 ```html
 <content-slot id="[slot-id]" theme="darkMode"></content-slot>
 ```
 
-### Met JavaScript
+### With JavaScript
 
-Selecteer het onePlayer element met javascript en zet de naam van het thema.  
-Hiervoor met de player wel klaar zijn met initialisatie fase.
+Select the OnePlayer element with javascript and set the theme.  
+The player must be ready with the earlier mention initialisation phase.
 
 ```js
 const onePlayer = document.querySelector('one-player');
@@ -58,7 +58,7 @@ function start() {
 }
 ```
 
-## Subscribe op playerState events
+## Subscribe on playerState events
 
 ```js
 const onePlayer = document.querySelector('one-player');
@@ -79,7 +79,7 @@ function subscribe() {
 
 ## Styling
 
-Zorg er voor dat de parent van het content-slot een hoogte en breedte heeft, voor optimale werking.
+Make sure the parent of the `<content-slot />` has a width and height for optimal performance.
 
 ```html
 <style>
