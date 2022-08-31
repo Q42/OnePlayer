@@ -56,16 +56,16 @@ function subscribe() {
 These are the supported attributes on the OnePlayer:
 
 | Attribute | Type   | Optional | Default     |
-| --------- | ------ | -------- | ----------- |
+| --------- | ------ | -------- |-------------|
 | theme     | string | true     | "lightMode" |
-| language  | string | true     | "en"        |
+| language  | string | true     | "nl"        |
 
 ### 1. Add an attribute to the content-slot
 
 While embedding the player in the html, set the attribute as an attribute
 
 ```html
-<content-slot id="[slot-id]" theme="darkMode" language="nl"></content-slot>
+<content-slot id="[slot-id]" theme="darkMode" language="en"></content-slot>
 ```
 
 ### With JavaScript
@@ -79,7 +79,7 @@ onePlayer.addEventListener('onReady', start);
 
 function start() {
   onePlayer.theme = 'darkMode';
-  onePlayer.language = 'nl';
+  onePlayer.language = 'en';
 }
 ```
 
