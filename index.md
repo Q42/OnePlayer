@@ -2,7 +2,7 @@
 title: OnePlayer implementation with content-slots
 ---
 
-[![Latest OnePlayer Version](https://img.shields.io/badge/OnePlayer-0.0.18-brightgreen)](https://oneplayer.42puzzles.com/)
+[![Latest OnePlayer Version](https://img.shields.io/badge/OnePlayer-0.0.24-brightgreen)](https://oneplayer.42puzzles.com/)
 
 ## Embedding
 
@@ -46,60 +46,93 @@ You can already implement this function, wait for the player to be ready and go 
 
 ```js
 function onePlayerReady(onePlayer) {
-  // This onePlayer is the same as the result of
+  // This onePlayer is the same as the result of:
   // document.querySelector('one-player')
-  console.log('This is the second way!', onePlayer.state);
+  console.log('This is the second way!');
 }
 ```
 
-## Subscribe on playerState events
+## OnePlayer attributes
+
+These are the supported attributes on the `<content-slot/>`:
+
+| Attribute | Type   | Optional | Default     | Change via API |
+| --------- | ------ | -------- | ----------- | -------------- |
+| id        | string | false    | -           | No             |
+| theme     | string | true     | "lightMode" | Yes            |
+| language  | string | true     | "nl"        | Yes            |
+
+While embedding the player in the html, set the attributes like this:
+
+```html
+<content-slot id="[id]" theme="darkMode" language="en"></content-slot>
+```
+
+## OnePlayer methods
+
+### Start
+
+Players can be configured to wait for the start method.  
+This is how you start the player:
+
+```js
+function onePlayerReady(onePlayer) {
+  onePlayer.start();
+}
+```
+
+### Set theme & language
+
+Use these methods to change the attributes set earlier
+
+```js
+function onePlayerReady(onePlayer) {
+  onePlayer.setTheme('darkMode');
+  onePlayer.setLanguage('nl');
+}
+```
+
+## Subscribe to OnePlayer events
 
 ```js
 function onePlayerReady() {
-  subscribe();
-}
-
-function subscribe() {
   // The custom onePlayer way...
-  onePlayer.events.on('onStateChange', (playerState) => {
-    console.log('New Player state:', playerState);
+  onePlayer.events.on('all', (eventObject) => {
+    console.log('New event:', eventObject.name);
   });
 
   // The native way...
-  onePlayer.addEventListener('onStateChange', (evt) => {
-    console.log('New Player state:', evt.detail);
+  onePlayer.addEventListener('all', (evt) => {
+    console.log('New event:', evt.detail.name);
   });
 }
 ```
 
-## Attributes of the OnePlayer
+### The eventObject
 
-These are the supported attributes on the OnePlayer:
+- name: PlayerExternalEvent;
+- prevState?: PlayerState;
+- nextState?: PlayerState;
+- data?: any;
 
-| Attribute | Type   | Optional | Default     | Change via API    |
-| --------- | ------ | -------- | ----------- | ----------------- |
-| theme     | string | true     | "lightMode" | Yes               |
-| language  | string | true     | "nl"        | No \*<sup>1</sup> |
+### PlayerExternalEvent
 
-\*<sup>1</sup> = This will be implemented in the future
+These are the event types the players emits:
 
-### 1. Add an attribute to the content-slot
+- started
+- completed
+- closed
+- aborted
+- share
+- visitUrl
+- all
 
-While embedding the player in the html, set the attribute as an attribute
+### PlayerState
 
-```html
-<content-slot id="[slot-id]" theme="darkMode" language="en"></content-slot>
-```
-
-### 2. With JavaScript
-
-Select the OnePlayer element with JavaScript and set the attribute.
-
-```js
-function onePlayerReady() {
-  onePlayer.theme = 'darkMode';
-}
-```
+- initializing
+- ready
+- playing
+- finished
 
 ## Styling
 
