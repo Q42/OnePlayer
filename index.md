@@ -1,5 +1,5 @@
 ---
-title: OnePlayer implementation with content-slots
+title: OnePlayer implementation on web
 ---
 
 [![Latest OnePlayer Version](https://img.shields.io/badge/OnePlayer-0.0.24-brightgreen)](https://oneplayer.42puzzles.com/)
@@ -56,16 +56,18 @@ function onePlayerReady(onePlayer) {
 
 These are the supported attributes on the `<content-slot/>`:
 
-| Attribute | Type   | Optional | Default     | Change via API |
-| --------- | ------ | -------- | ----------- | -------------- |
-| id        | string | false    | -           | No             |
-| theme     | string | true     | "lightMode" | Yes            |
-| language  | string | true     | "nl"        | Yes            |
+| Attribute   | Type   | Optional | Default     | Change via API |
+| ----------- | ------ | -------- | ----------- | -------------- |
+| id          | string | false    | -           | No             |
+| theme       | string | true     | "lightMode" | setTheme       |
+| language    | string | true     | "nl"        | setLanguage    |
+| userId      | string | true     | undefined   | No             |
+| isInWebView | bool   | true     | false       | setIsInWebView |
 
 While embedding the player in the html, set the attributes like this:
 
 ```html
-<content-slot id="[id]" theme="darkMode" language="en"></content-slot>
+<content-slot id="[id]" theme="darkMode" language="en" userId="abc" isInWebView="true"></content-slot>
 ```
 
 ## OnePlayer methods
