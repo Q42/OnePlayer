@@ -16,7 +16,7 @@ These are the supported attributes on the `<iframe/>`:
 
 | Attribute   | Type   | Optional | Default     | Change via API |
 | ----------- | ------ | -------- | ----------- | -------------- |
-| id          | string | false    | -           | No             |
+| src         | string | false    | -           | No             |
 | theme       | string | true     | "lightMode" | setTheme       |
 | language    | string | true     | "nl"        | setLanguage    |
 | userId      | string | true     | undefined   | No             |
