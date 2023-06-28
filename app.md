@@ -2,12 +2,12 @@
 title: OnePlayer implementation in app
 ---
 
-[![Latest OnePlayer Version](https://img.shields.io/badge/OnePlayer-0.0.24-brightgreen)](https://oneplayer.42puzzles.com/)
+[![Latest OnePlayer Version](https://img.shields.io/badge/OnePlayer-2.13.0-brightgreen)](https://oneplayer.42puzzles.com/)
 
 ## Embedding
 
 ```html
-<iframe src="" />
+<iframe src="[src]" />
 ```
 
 ## OnePlayer attributes
@@ -25,5 +25,5 @@ These are the supported attributes on the `<iframe/>`:
 Set the attributes like this:
 
 ```html
-<iframe src="[src]" theme="darkMode" language="en" userId="abc" isInWebView="true"></content-slot>
+<iframe src="[src]?theme=darkMode&language=en&userId=abc&isInWebView=true"></iframe>
 ```
