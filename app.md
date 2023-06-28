@@ -10,9 +10,9 @@ title: OnePlayer implementation in app
 <iframe src="[src]" />
 ```
 
-## OnePlayer attributes
+## OnePlayer parameters
 
-These are the supported attributes on the `<iframe/>`:
+These are the supported querystring parameters on the `<iframe/>`:
 
 | Attribute   | Type   | Optional | Default     | Change via API |
 | ----------- | ------ | -------- | ----------- | -------------- |
@@ -22,7 +22,7 @@ These are the supported attributes on the `<iframe/>`:
 | userId      | string | true     | undefined   | No             |
 | isInWebView | bool   | true     | false       | setIsInWebView |
 
-Set the attributes like this:
+Set the parameters like this:
 
 ```html
 <iframe src="[src]?theme=darkMode&language=en&userId=abc&isInWebView=true"></iframe>
