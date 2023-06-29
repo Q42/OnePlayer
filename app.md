@@ -6,11 +6,18 @@ title: OnePlayer implementation in app
 
 ## Embedding
 
+When embedding the puzzles in an iOS or Android WebView, you can point to an iFrame that we generate for your puzzles.
+In web, you can also use this implementation but it's preferred to use the [custom element implementation](/).
+
+The URL is in the format `https://cdn.42puzzles.com/iframe/[CUSTOMER_ID]/[EMBED_ID]-cdn-file.html`
+
 ```html
-<iframe src="[src]" />
+<iframe src="[URL]" />
 ```
 
 ## OnePlayer parameters
+
+You can specify start parameters by putting them in the querystring of the iFrame URL.
 
 These are the supported querystring parameters on the `<iframe/>`:
 
@@ -25,5 +32,5 @@ These are the supported querystring parameters on the `<iframe/>`:
 Set the parameters like this:
 
 ```html
-<iframe src="[src]?theme=darkMode&language=en&userId=abc&isInWebView=true"></iframe>
+<iframe src="[URL]?theme=darkMode&language=en&userId=abc&isInWebView=true"></iframe>
 ```
