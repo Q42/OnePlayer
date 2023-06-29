@@ -49,7 +49,7 @@ The script message handler that you registered will then be called like this:
 
 ```
 func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-    assert(message.name == "allMessages")
+    guard message.name == "allMessages" else { return }
     … decode the message.body and handle it …
 }
 ```
