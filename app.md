@@ -34,3 +34,52 @@ Set the parameters like this:
 ```html
 <iframe src="[URL]?theme=darkMode&language=en&userId=abc&isInWebView=true"></iframe>
 ```
+
+## iOS
+
+The recommended method is embedding the URL within a `WKWebView`.
+
+In the `WKWebViewConfiguration`, add yourself as a script message handler. We send all messages over the `allMessages` messagehandler.
+
+```
+webViewConfiguration.userContentController.add(self, name: "allMessages")
+```
+
+The script message handler that you registered will then be called like this:
+
+```
+func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+    assert(message.name == "allMessages")
+    … decode the message.body and handle it …
+}
+```
+
+## Android
+
+TODO
+
+## The WKScriptMessage.body
+
+- name: PlayerExternalEvent;
+- prevState?: PlayerState;
+- nextState?: PlayerState;
+- data?: any;
+
+### PlayerExternalEvent
+
+These are the event types the players emits:
+
+- started
+- completed
+- closed
+- aborted
+- share
+- visitUrl
+- all
+
+### PlayerState
+
+- initializing
+- ready
+- playing
+- finished
