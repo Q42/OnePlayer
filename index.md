@@ -97,7 +97,7 @@ function onePlayerReady(onePlayer) {
 ## Subscribe to OnePlayer events
 
 ```js
-function onePlayerReady() {
+function onePlayerReady(onePlayer) {
   // The custom onePlayer way...
   onePlayer.events.on('all', (eventObject) => {
     console.log('New event:', eventObject.name);
